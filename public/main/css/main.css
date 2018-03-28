@@ -1,0 +1,7 @@
+p, h1{
+    text-transform: capitalize;
+}
+
+input:nth-child(3), input:nth-child(4){
+    margin-left: 1rem;
+}
