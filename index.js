@@ -1,9 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser') // used for format the http request in Json 
 const jade = require('jade') // used for render the views in the page
-const nexmo = require('nexmo') // used for send messages throught sms
 const socketio = require('socket.io') // for socket listener
-
 const routing = require('./routes/routing')
 const config = require('./config')
 
@@ -23,8 +21,17 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 
 //starting app
-app.listen(config.socket, ()=>{
+let server = app.listen(config.socket, ()=>{
     console.log(`server running in port: ${config.socket}`)
+})
+
+// Connect to socket.io
+const io = socketio(server)
+io.on('connection', (socket)=>{
+    console.log('connected')
+    io.on('disconnect', ()=>{
+        console.log('disconnected')
+    })
 })
 
 //Calling the router
