@@ -4,7 +4,6 @@ const jwt = require('jwt-simple')
 const moment = require('moment')
 const config = require('../config')
 
-
 const Nexmo = require('nexmo') // used for send messages throught sms
 const nexmo = new Nexmo({
     apiKey : config.nexmoCredentials.API_KEY,
@@ -13,9 +12,7 @@ const nexmo = new Nexmo({
 
 
 // Jwt encoders and decoders 
-let createToken = (user)=>{
-    console.log(user);
-    
+const createToken = (user)=>{    
     const payload={
         sub:  user.username,
         perm : user.id_profile,
@@ -26,7 +23,7 @@ let createToken = (user)=>{
     return jwt.encode(payload, config.SECRET_TOKEN)
 }
 
-let decodeToken = (token)=>{
+const decodeToken = (token)=>{
     const decoded = new Promise ((resolve, reject) =>{
         try{
             let payload = jwt.decode(token, config.SECRET_TOKEN)
@@ -46,16 +43,15 @@ let decodeToken = (token)=>{
             })
         }
     })
-
     return decoded
 }
 
 // Method to send a sms
-let smsVerification = (data)=>{
-    nexmo.message.sendSms('573005261395',data.phone_number,data.code,{type : 'unicode'},
+const smsVerification = (phone_number,code)=>{
+    nexmo.message.sendSms(config.VIRTUAL_NUMBER, phone_number,code,{type : 'unicode'},
         (err, response) =>{
             if(err){
-                console.log('Error enviando el mensaje de texto')
+                console.log('sms verification error',err)
                 return err
             }
             console.dir(response)
@@ -63,9 +59,12 @@ let smsVerification = (data)=>{
     )
 }
 
+const generateCode = ()=> String(Math.floor(100000 + Math.random() * 900000)).substring(0,4)
+
 
 module.exports = {
     createToken,
     decodeToken,
-    smsVerification
+    smsVerification,
+    generateCode
 }

@@ -5,12 +5,13 @@ module.exports = (app)=>{
     app.get('/', (req, res)=>{ res.redirect('/home')})
 
     // route for insert users
-    app.post('/api/register-user', userController.registerUser)
     app.post('/app/signin/',userController.signIn)
-
-
-    app.get('/api/validate-sms/:phone', userController.validateSms )
-    app.get('/api/register-user', userController.formInsertMewUser)
+    app.post('/api/register-user', userController.registerUser)
+    
+    app.get( '/api/validate-sms/:number', userController.validateSms)
+    app.get( '/api/register-user', userController.formInsertMewUser)
+    app.get( '/api/validateUser', userController.validarMensaje)
+    
     app.get('/home',commonController.home)
     app.get('/admin', auth,(req, res)=>{
         res.status(200).send({message: 'access garanted'})

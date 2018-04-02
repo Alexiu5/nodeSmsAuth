@@ -4,24 +4,24 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        title Document
+        title Home
         link(href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css", rel="stylesheet")
         link(rel="stylesheet", href="./main/css/main.css")
-        script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js")
-        script(src="./main/js/main.js")
-        script(src="./js-xlsx/dist/xlsx.full.min.js")
-        
-    body
-    .container
-        .row
-            h1 Log in
-            
-            form(action="", id="formLogin", method="post")
-                input(type="text", id="username", name="username", placeholder="Username")
-                input(type="password", id="password",name="password", placeholder="Password")
-                input(type="submit", value="send",id="sendData",class="button-primary")
 
-            a(href="/api/register-user") Register
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+        script(src="./main/js/main.js")
+
+    body
+        .container
+            .row
+                h1 Log in
+                form(action="", id="formLogin", method="POST")
+                    input(type="text", id="username", name="username", placeholder="Username")
+                    input(type="password", id="password", name="password", placeholder="Password")
+                    input(type="submit", value="send", id="sendData", class="button-primary")
+
+                a(href="/api/register-user") Register
         
   
 

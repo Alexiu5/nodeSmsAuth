@@ -28,7 +28,7 @@ let server = app.listen(config.socket, ()=>{
 // Connect to socket.io
 const io = socketio(server)
 io.on('connection', (socket)=>{
-    console.log('connected')
+    socket.emit('message', {message : 'hello wrld'})
     io.on('disconnect', ()=>{
         console.log('disconnected')
     })
