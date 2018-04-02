@@ -56,7 +56,7 @@ let signIn = (req,res)=>{
         res.status(200).send(
             {message: `welcome ${user[0]}`,
              token : services.createToken(result[0])}
-             )
+        )
     })
 }
 

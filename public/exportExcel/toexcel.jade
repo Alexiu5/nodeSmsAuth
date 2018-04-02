@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Export to excel
+        script(src="../../node_modules/js-xlsx/dist/xlsx.full.min.js")
+    body
+
+    script.
+        let wb = XLSX.utils.table_to_book(document.getElementById('mytable'),{sheet:'databaseJS'})
+        let wbout = XLSX.write(wb,{bookType:'xlsx', bookSST:true, type:'binary'})
+
+        let s2ab = (s)=>{
+            let buf = new ArrayBuffer(s.length)
+            let view = new Uint8Array(buf)
+            for(let i=0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF
+            return buf
+        }
+
+        let exportToExcel = ()=>{
+            saveAs(new Blob([s2ab(wbout)],{type: 'application/octet-stream'}), 'test.xlsx')
+        }
+
