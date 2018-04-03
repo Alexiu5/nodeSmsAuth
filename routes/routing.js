@@ -10,7 +10,7 @@ module.exports = (app)=>{
     
     app.get( '/api/validate-sms/:number', userController.validateSms)
     app.get( '/api/register-user', userController.formInsertMewUser)
-    app.get( '/api/validateUser', userController.validarMensaje)
+    app.get( '/api/validateUser', userController.searchInfo)
     
     app.get('/home',commonController.home)
     app.get('/admin', auth,(req, res)=>{

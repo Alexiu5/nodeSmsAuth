@@ -4,6 +4,7 @@ const jade = require('jade') // used for render the views in the page
 const socketio = require('socket.io') // for socket listener
 const routing = require('./routes/routing')
 const config = require('./config')
+const database = require('./database/database')
 
 //init express aplication
 const app = express()

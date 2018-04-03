@@ -1,5 +1,5 @@
 const connection = require('../database/database')
-const services = require('../services/services.js')
+const services = require('../services/services')
 
 let formInsertMewUser = (req, res)=>{
     res.render('../public/newUser/newUser.jade')
@@ -7,33 +7,42 @@ let formInsertMewUser = (req, res)=>{
 
 let searchInfo = (req, res)=>{
     let query = 'SELECT * FROM users'
-    connection.query(query, (err, data)=>{
-        if(err){
-            console.log('query not found')  
-        }else{
-            console.log(data)
-            res.send(req.params)
-        }
-    })    
+        connection.result()
+            .then((conn)=>{
+                return conn.query('SELECT * FROM users')
+            })
+            .then((row)=>{
+                res.send(row)
+            })
+
+
+    // connection.query(query, (err, data)=>{
+    //     if(err){
+    //         console.log('query not found')  
+    //     }else{
+    //         console.log(data)
+    //         res.send(req.params)
+    //     }
+    // })    
 }
 
 let registerUser = (req, res, next)=>{
-    let user = {
-        username : req. body.username,
-        password : req.body.password,
-        name : req.body.name,
-        mail : req.body.mail,
-        phone_number : req.body.phone_number
-    }
-    let query = 'INSERT INTO users SET ?'
-    connection.query(query, user,(err, data)=>{
-        if(err){
-           res.status(500).send({message : `error al crear el usuario ${err}`})
-        }else{
-            res.status(200).send({token : services.createToken(user)})
-            res.redirect(`/api/validate-sms/${user.phone_number}`)
-        }
-    })
+    // let user = {
+    //     username : req. body.username,
+    //     password : req.body.password,
+    //     name : req.body.name,
+    //     mail : req.body.mail,
+    //     phone_number : req.body.phone_number
+    // }
+    // let query = 'INSERT INTO users SET ?'
+    // connection.query(query, user,(err, data)=>{
+    //     if(err){
+    //        res.status(500).send({message : `error al crear el usuario ${err}`})
+    //     }else{
+    //         res.status(200).send({token : services.createToken(user)})
+    //         res.redirect(`/api/validate-sms/${user.phone_number}`)
+    //     }
+    // })
     
 }
 
