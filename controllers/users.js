@@ -7,7 +7,7 @@ let formInsertMewUser = (req, res)=>{
 
 let searchInfo = (req, res)=>{
     let query = 'SELECT * FROM users'
-        connection.result()
+        connection.connection()
             .then((conn)=>{
                 return conn.query('SELECT * FROM users')
             })
