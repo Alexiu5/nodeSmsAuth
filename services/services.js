@@ -10,7 +10,6 @@ const nexmo = new Nexmo({
     apiSecret : config.nexmoCredentials.API_SECRET
 }, {debug : true})
 
-
 // Jwt encoders and decoders 
 const createToken = (user)=>{    
     const payload={
@@ -60,11 +59,18 @@ const smsVerification = (phone_number,code)=>{
 }
 
 const generateCode = ()=> String(Math.floor(100000 + Math.random() * 900000)).substring(0,4)
-
+const isEmpty = (data)=>{
+    if(data.length > 0){
+        return true
+    }
+    return false
+}
 
 module.exports = {
     createToken,
     decodeToken,
     smsVerification,
-    generateCode
+    generateCode,
+    isEmpty 
+
 }

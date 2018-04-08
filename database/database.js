@@ -14,6 +14,5 @@ let connection = ()=>{
         resolve (mysql.createConnection(db_settings))
     })
 }
-module.exports = {
-    connection
-}
+module.exports = connection
+

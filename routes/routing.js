@@ -3,10 +3,9 @@ const commonController = require('../controllers/commonController.js')
 const auth = require('../middlewares/auth')
 module.exports = (app)=>{
     app.get('/', (req, res)=>{ res.redirect('/home')})
-
     // route for insert users
-    app.post('/app/signin/',userController.signIn)
-    app.post('/api/register-user', userController.registerUser)
+    app.post('/app/login/',userController.login)
+    app.post('/api/signup', userController.signup)
     
     app.get( '/api/validate-sms/:number', userController.validateSms)
     app.get( '/api/register-user', userController.formInsertMewUser)
