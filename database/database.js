@@ -11,7 +11,13 @@ let db_settings = {
 
 let connection = ()=>{
     return new Promise((resolve, reject)=>{
-        resolve (mysql.createConnection(db_settings))
+        let connection = mysql.createConnection(db_settings)
+        .catch((err)=>{
+            console.log('Database connection error')
+            reject(err)
+        })
+        
+        resolve (connection)  
     })
 }
 module.exports = connection

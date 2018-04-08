@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-04-2018 a las 20:55:07
+-- Tiempo de generación: 08-04-2018 a las 11:39:39
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -21,6 +21,18 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `appdatabase`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sms_verification`
+--
+
+CREATE TABLE `sms_verification` (
+  `id_verication` int(10) NOT NULL,
+  `id_user` int(10) NOT NULL,
+  `sms_code` varchar(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -47,7 +59,7 @@ INSERT INTO `type_profile` (`id_profile`, `name`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id_user` int(2) NOT NULL,
+  `id_user` int(10) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -69,6 +81,13 @@ INSERT INTO `users` (`id_user`, `username`, `password`, `name`, `mail`, `phone_n
 --
 
 --
+-- Indices de la tabla `sms_verification`
+--
+ALTER TABLE `sms_verification`
+  ADD PRIMARY KEY (`id_verication`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Indices de la tabla `type_profile`
 --
 ALTER TABLE `type_profile`
@@ -85,6 +104,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `sms_verification`
+--
+ALTER TABLE `sms_verification`
+  MODIFY `id_verication` int(10) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `type_profile`
 --
 ALTER TABLE `type_profile`
@@ -94,7 +119,17 @@ ALTER TABLE `type_profile`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `sms_verification`
+--
+ALTER TABLE `sms_verification`
+  ADD CONSTRAINT `sms_verification_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

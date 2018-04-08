@@ -26,6 +26,13 @@ let server = app.listen(config.socket, ()=>{
     console.log(`server running in port: ${config.socket}`)
 })
 
+// Enable cross origin resources sharing
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 // Connect to socket.io
 const io = socketio(server)
 io.on('connection', (socket)=>{
