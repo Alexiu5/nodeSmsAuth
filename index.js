@@ -5,6 +5,7 @@ const socketio = require('socket.io') // for socket listener
 const routing = require('./routes/routing')
 const config = require('./config')
 const database = require('./database/database')
+const cors = require('cors')
 
 //init express aplication
 const app = express()
@@ -27,15 +28,12 @@ let server = app.listen(config.socket, ()=>{
 })
 
 // Enable cross origin resources sharing
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+app.use(cors());
 
 // Connect to socket.io
 const io = socketio(server)
 io.on('connection', (socket)=>{
+    console.log('user connected');
     socket.emit('message', {message : 'hello wrld'})
     io.on('disconnect', ()=>{
         console.log('disconnected')

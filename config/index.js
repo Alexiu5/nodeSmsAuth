@@ -6,10 +6,10 @@ module.exports = {
         VIRTUAL_NUMBER : '573005261395'
     },
     databaseCredentials : {
-        HOST     : 'localhost',
-        USER     : 'root',
-        PASSWORD : '',
-        DATABASE : 'appDatabase'
+        HOST     : 'am1shyeyqbxzy8gc.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+        USER     : 'vkhqd7x1xnzhgaha',
+        PASSWORD : 'xkxhwfhkl9lr69ld',
+        DATABASE : 'kmrbowh2rmz76rb8'
     },
     SECRET_TOKEN: 'thisisasecrettoken'
 }

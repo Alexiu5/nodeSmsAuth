@@ -4,6 +4,7 @@ const jwt = require('jwt-simple')
 const moment = require('moment')
 const config = require('../config')
 
+
 const Nexmo = require('nexmo') // used for send messages throught sms
 const nexmo = new Nexmo({
     apiKey : config.nexmoCredentials.API_KEY,
@@ -14,6 +15,7 @@ const nexmo = new Nexmo({
 const createToken = (user)=>{    
     const payload={
         sub:  user.username,
+        phone : user.phone_number,
         perm : user.id_profile,
         iat : moment().unix(),
         exp : moment().add(1,'days').unix()
@@ -32,9 +34,7 @@ const decodeToken = (token)=>{
                     message : 'the token expiried'
                 })
             }
-            console.log(payload)
-            resolve(payload.sub)
-
+            resolve(payload)
         }catch(err){
             reject({
                 status : 500,
@@ -59,6 +59,7 @@ const smsVerification = (phone_number,code)=>{
 }
 
 const generateCode = ()=> String(Math.floor(100000 + Math.random() * 900000)).substring(0,4)
+
 const isEmpty = (data)=>{
     if(data.length > 0){
         return true

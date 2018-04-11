@@ -1,4 +1,5 @@
 const services = require("../services/services")
+const daf = require('./dataAccessFile')
 // const jwt = require('jwt-simple')
 
 // const nexmo = new Nexmo({
@@ -7,7 +8,14 @@ const services = require("../services/services")
 // },{debug : true})
 
 const home = (req, res) =>{
-    res.render('../public/index.jade')
+    let result = daf.testConnection()
+        .then((data)=>{
+            res.render('../public/index.jade')
+        })
+        .catch((err)=>{
+            res.send('error trying to search the user data')
+        })
+    
 }
 
 const logIn = (req, res)=>{
