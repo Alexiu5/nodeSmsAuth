@@ -8,14 +8,7 @@ const daf = require('./dataAccessFile')
 // },{debug : true})
 
 const home = (req, res) =>{
-    let result = daf.testConnection()
-        .then((data)=>{
-            res.render('../public/index.jade')
-        })
-        .catch((err)=>{
-            res.send('error trying to search the user data')
-        })
-    
+    res.render('../public/index.jade')
 }
 
 const logIn = (req, res)=>{
