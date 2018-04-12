@@ -8,7 +8,7 @@ module.exports = {
     databaseCredentials : {
         HOST     : 'am1shyeyqbxzy8gc.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
         USER     : 'vkhqd7x1xnzhgaha',
-        PASSWORD : 'xkxhwfhkl9lr69ld',
+        PASSWORD : 'qj7tu6eto9j3zsfw',
         DATABASE : 'kmrbowh2rmz76rb8'
     },
     SECRET_TOKEN: 'thisisasecrettoken'
