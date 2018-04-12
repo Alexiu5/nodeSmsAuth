@@ -23,8 +23,8 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 
 //starting app
-let server = app.listen(process.env.PORT || 5000, ()=>{
-    console.log(`server running in port: ${process.env.PORT}`)
+let server = app.listen(config.socket, ()=>{
+    console.log(`server running in port: ${config.socket}`)
 })
 
 // Enable cross origin resources sharing

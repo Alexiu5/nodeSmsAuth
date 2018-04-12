@@ -12,6 +12,8 @@ module.exports = (app)=>{
     app.get( '/api/validate-sms/:number',auth, userController.generateCode)
     app.get( '/api/register-user', userController.formInsertMewUser)
     app.get( '/api/validateUser', userController.searchInfo)
+
+    app.get( '/downloadapp', commonController.downloadApp)
     
 
     app.get('/home',commonController.home)

@@ -1,0 +1,39 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #023A59,#02475A, #05595B);
+}
+
+.banner-container{
+    width: 100vw;
+    
+}
+
+.bannerContent{
+    text-align: center;
+    width: 90%;
+    margin: auto;
+    margin-top: 30vh;
+    position: relative;
+}
+
+.bannerContent h1, .bannerContent p, .bannerContent button {
+    color:white;
+}
+
+
+.banner button{
+    position: relative;
+    margin: 0px auto;
+}
+.bannerContent h1{
+    font-weight: 300;
+    font-size: 6em;
+    text-transform: capitalize;
+}
+
+.bannerContent p{
+    font-size: 1.2em;
+    font-weight: 100;
+}
