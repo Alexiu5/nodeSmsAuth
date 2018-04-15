@@ -47,11 +47,14 @@ const decodeToken = (token)=>{
 
 // Method to send a sms
 const smsVerification = (phone_number,code)=>{
-    nexmo.message.sendSms(config.VIRTUAL_NUMBER, phone_number,code,{type : 'unicode'},
+    let ph = "57"+phone_number
+    let message = `codigo de confirmacion : ${code}`
+    
+    nexmo.message.sendSms(config.nexmoCredentials.VIRTUAL_NUMBER, ph,message,{type : 'unicode'},
         (err, response) =>{
             if(err){
                 console.log('sms verification error',err)
-                return err
+                return err  
             }
             console.dir(response)
         }
