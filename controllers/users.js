@@ -44,7 +44,7 @@ let generateCode = (req,res)=>{
     daf.searchUserByPhone(phone_number)
         .then((data)=>{
                 daf.registerCode(data[0].id_user, code).then((response) => {
-                // services.smsVerification(phone_number, code); // Nexmo Service call
+                services.smsVerification(phone_number, code); // Nexmo Service call
                 res.status(200).send({phone_number: phone_number, message : 'code generated'})
             })
         })
