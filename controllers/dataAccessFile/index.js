@@ -8,7 +8,9 @@ let findUser = (id_user)=>{
             conn.end()
             return result
         })
-        .catch((err)=> console.log(err))
+        .catch((err)=> {
+            conn.end()
+            console.log(err)})
 }
 
 let searchUserByPhone = (phone_number)=>{
@@ -19,7 +21,9 @@ let searchUserByPhone = (phone_number)=>{
                     conn.end()
             return result
                 })
-                .catch((err)=> console.log(err))
+                .catch((err)=> {
+                    conn.end()
+                    console.log(err)})
 }
 
 let getUserById = (username) =>{
@@ -30,7 +34,9 @@ let getUserById = (username) =>{
                 conn.end()
             return result
             })
-            .catch((err)=> console.log(err))
+            .catch((err)=> {
+                conn.end()
+                console.log(err)})
 }
 
 let registerUser = (user)=>{
@@ -41,7 +47,9 @@ let registerUser = (user)=>{
             conn.end()
             return result
         })
-        .catch((err)=> console.log(err))    
+        .catch((err)=> {
+            conn.end()
+            console.log(err)})    
 }
 
 let searchUserState= (username)=>{
@@ -52,7 +60,9 @@ let searchUserState= (username)=>{
             conn.end()
             return result
         })
-        .catch((err)=> console.log(err))
+        .catch((err)=> {
+            conn.end()
+            console.log(err)})
 }
 
 let registerCode = (id_user, code)=>{
@@ -63,7 +73,9 @@ let registerCode = (id_user, code)=>{
             conn.end()
             return result
         })
-        .catch((err)=> console.log(err))
+        .catch((err)=> {
+            conn.end()
+            console.log(err)})
 }
 
 let searchCode = (username)=>{
@@ -74,7 +86,9 @@ let searchCode = (username)=>{
             conn.end()
             return result
         })
-        .catch((err)=> console.log(err))
+        .catch((err)=> {
+            conn.end()
+            console.log(err)})
 }
 
 
@@ -86,7 +100,9 @@ let updateState = (state, username)=>{
             conn.end()
             return result
         })
-        .catch((err)=> console.log(err))
+        .catch((err)=> {
+            conn.end()
+            console.log(err)})
 }
 
 let login = (username, password)=>{
@@ -98,7 +114,9 @@ let login = (username, password)=>{
             conn.end()
             return result
         })
-        .catch((err)=> console.log(err))
+        .catch((err)=> {
+            conn.end()
+            console.log(err)})
 }
 
 
