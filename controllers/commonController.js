@@ -16,7 +16,7 @@ const home = (req, res) =>{
 }
 
 let downloadApp = (req, res)=>{
-    var file = './public/upload-folder/example.PNG';
+    var file = './public/upload-folder/app.apk';
     
     var filename = path.basename(file);
     var mimetype = mime.lookup(file);
